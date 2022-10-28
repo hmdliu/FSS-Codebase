@@ -1,0 +1,15 @@
+results/
+tmp/
+*.DS_Store
+*.json
+*.swp
+*.pth.tar
+*.pth
+*.cluster
+*.log
+*.out
+*.err
+*.zip
+*.csv
+*.pickle
+*.pyc
