@@ -1,0 +1,198 @@
+save_path: ./results/sample/wd_pm11
+
+exp_dict: {'inner_loss': 'wce', 'meta_loss': 'wce', 'layers': 50, 'shot': 1, 'train_split': 1}
+
+args: adapt_iter: 100
+arch: pspnet
+att_dropout: 0.5
+augmentations: ['resize']
+backbone: resnet
+batch_size: 1
+batch_size_val: None
+bins: [1, 2, 3, 6]
+bottleneck_dim: 512
+ckpt_path: checkpoints/
+config_path: configs/pascal_sample.yaml
+data_root: ../dataset/VOCdevkit/VOC2012
+debug_flag: False
+decoder: None
+decoder_dim: None
+dropout: 0.1
+encoder_blocks: 5
+encoder_dim: 512
+epochs: 5
+exp_id: sample_wd_pm11
+extra_tokens_num: 0
+feats_type: cnn
+final_pool: False
+gamma: 0.1
+heads: 4
+image_size: 473
+inner_loss: wce
+iter_per_epoch: None
+layers: 50
+log_freq: 200
+loss_idx: 1
+lr_cls: 0.1
+lr_meta: 0.0015
+lr_stepsize: 30
+m_scale: False
+main_optim: SGD
+manual_seed: 42
+mean: [0.485, 0.456, 0.406]
+meta_loss: wce
+meta_model: sample
+milestones: [40, 70]
+miou_grp_size: 4
+momentum: 0.9
+n_runs: 1
+nesterov: True
+norm_q: True
+norm_s: False
+num_classes_tr: None
+num_classes_val: None
+padding: avg
+padding_label: 255
+patch_size: 16
+per_epoch_val: 4
+pretrained: True
+random_shot: False
+resume_weight: pretrained/pascal/split0/pspnet_resnet50/best.pth
+rmid: None
+rot_max: 10
+rot_min: -10
+save_flag: True
+scale_max: 2.0
+scale_min: 0.5
+scheduler: cosine
+shot: 1
+std: [0.229, 0.224, 0.225]
+test_name: default
+test_num: 1000
+test_split: default
+train_list: lists/pascal/train.txt
+train_name: pascal
+train_split: 1
+use_amp: True
+use_ppm: True
+use_split_coco: False
+val_list: lists/pascal/val.txt
+weight_decay: 0.0001
+workers: 2
+zoom_factor: 8
+==> loading backbone weight from: pretrained/pascal/split1/pspnet_resnet50/best.pth
+==> <All keys matched successfully>
+
+Meta Model: SampleModel(
+  (classifier): DecoderSimple(
+    (classifier): Conv2d(512, 2, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (att): Attention(
+    (qkv): Linear(in_features=512, out_features=1536, bias=True)
+    (attn_drop): Dropout(p=0.5, inplace=False)
+    (proj): Linear(in_features=512, out_features=512, bias=True)
+    (proj_drop): Dropout(p=0.5, inplace=False)
+  )
+  (norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+)
+
+==> Using automatic mixed precision for training
+
+==> Epoch 1: training start
+Epoch 1 Iter 5/20: loss0 0.53 mIoU0 0.8596 | loss1 3.89 mIoU1 0.6821 | loss2 3.86 mIoU2 0.6842 | lr 0.0015
+Epoch 1 Iter 10/20: loss0 0.55 mIoU0 0.8066 | loss1 5.38 mIoU1 0.5739 | loss2 5.33 mIoU2 0.5766 | lr 0.0015
+
+==> Epoch 1: testing start
+Episode 5/20: loss0 0.59 mIoU0 0.4709 | loss1 1.33 mIoU1 0.4734 | loss2 1.35 mIoU2 0.4734
+Episode 10/20: loss0 0.60 mIoU0 0.5674 | loss1 1.37 mIoU1 0.6367 | loss2 1.38 mIoU2 0.6372
+Episode 15/20: loss0 0.60 mIoU0 0.5372 | loss1 1.71 mIoU1 0.5871 | loss2 1.73 mIoU2 0.5875
+Episode 20/20: loss0 0.61 mIoU0 0.5538 | loss1 1.75 mIoU1 0.5976 | loss2 1.78 mIoU2 0.5983
+==> Testing: inference speed 407 iters/min
+==> Testing: class 1 mIoU 0.7585
+==> Testing: class 2 mIoU 0.6254
+==> Testing: class 3 mIoU 0.6796
+==> Testing: class 4 mIoU 0.1035
+==> Testing: class 5 mIoU 0.8242
+==> Testing: FB-IoU0 0.7417 | FB-IoU1 0.6941 | FB-IoU2 0.6957
+
+==> Max mIoU:        pred0 0.5538 | pred1 0.5976 | pred2 0.5983
+==> Max FB-IoU:      pred0 0.7417 | pred1 0.6941 | pred2 0.6957
+==> Average mIoU:    pred0 0.5538 | pred1 0.5976 | pred2 0.5983
+==> Average FB-IoU:  pred0 0.7417 | pred1 0.6941 | pred2 0.6957
+==> Smoothed mIoU:   pred0 0.5538 | pred1 0.5976 | pred2 0.5983
+==> Smoothed FB-IoU: pred0 0.7417 | pred1 0.6941 | pred2 0.6957
+==> Epoch 1: saving checkpoint as ./results/sample/wd_pm11/best.pth
+
+==> Epoch 1: training resume
+Epoch 1 Iter 15/20: loss0 0.55 mIoU0 0.7911 | loss1 7.00 mIoU1 0.4958 | loss2 6.94 mIoU2 0.4989 | lr 0.0015
+Epoch 1 Iter 20/20: loss0 0.56 mIoU0 0.7320 | loss1 7.35 mIoU1 0.4447 | loss2 7.27 mIoU2 0.4477 | lr 0.0015
+
+==> Epoch 1: testing start
+Episode 5/20: loss0 0.59 mIoU0 0.3701 | loss1 1.59 mIoU1 0.3246 | loss2 1.61 mIoU2 0.3256
+Episode 10/20: loss0 0.60 mIoU0 0.4495 | loss1 1.17 mIoU1 0.4170 | loss2 1.18 mIoU2 0.4183
+Episode 15/20: loss0 0.61 mIoU0 0.4165 | loss1 1.13 mIoU1 0.4186 | loss2 1.16 mIoU2 0.4191
+Episode 20/20: loss0 0.60 mIoU0 0.5182 | loss1 1.00 mIoU1 0.5086 | loss2 1.02 mIoU2 0.5097
+==> Testing: inference speed 406 iters/min
+==> Testing: class 1 mIoU 0.5855
+==> Testing: class 2 mIoU 0.3400
+==> Testing: class 3 mIoU 0.6346
+==> Testing: class 4 mIoU 0.1015
+==> Testing: class 5 mIoU 0.8870
+==> Testing: FB-IoU0 0.6676 | FB-IoU1 0.6272 | FB-IoU2 0.6293
+
+==> Max mIoU:        pred0 0.5538 | pred1 0.5976 | pred2 0.5983
+==> Max FB-IoU:      pred0 0.7417 | pred1 0.6941 | pred2 0.6957
+==> Average mIoU:    pred0 0.5360 | pred1 0.5531 | pred2 0.5540
+==> Average FB-IoU:  pred0 0.7047 | pred1 0.6606 | pred2 0.6625
+==> Smoothed mIoU:   pred0 0.5360 | pred1 0.5531 | pred2 0.5540
+==> Smoothed FB-IoU: pred0 0.7047 | pred1 0.6606 | pred2 0.6625
+
+==> Epoch 2: training start
+Epoch 2 Iter 5/20: loss0 0.54 mIoU0 0.8057 | loss1 8.01 mIoU1 0.3353 | loss2 7.87 mIoU2 0.3405 | lr 0.0015
+Epoch 2 Iter 10/20: loss0 0.54 mIoU0 0.8505 | loss1 8.51 mIoU1 0.3105 | loss2 8.35 mIoU2 0.3152 | lr 0.0015
+
+==> Epoch 2: testing start
+Episode 5/20: loss0 0.56 mIoU0 0.5118 | loss1 0.36 mIoU1 0.5035 | loss2 0.37 mIoU2 0.5042
+Episode 10/20: loss0 0.60 mIoU0 0.5915 | loss1 0.57 mIoU1 0.6041 | loss2 0.60 mIoU2 0.6045
+Episode 15/20: loss0 0.60 mIoU0 0.5542 | loss1 0.73 mIoU1 0.5635 | loss2 0.75 mIoU2 0.5641
+Episode 20/20: loss0 0.60 mIoU0 0.5584 | loss1 0.66 mIoU1 0.5437 | loss2 0.69 mIoU2 0.5456
+==> Testing: inference speed 412 iters/min
+==> Testing: class 1 mIoU 0.6811
+==> Testing: class 2 mIoU 0.5058
+==> Testing: class 3 mIoU 0.6083
+==> Testing: class 4 mIoU 0.0920
+==> Testing: class 5 mIoU 0.8408
+==> Testing: FB-IoU0 0.7364 | FB-IoU1 0.6971 | FB-IoU2 0.6999
+
+==> Max mIoU:        pred0 0.5538 | pred1 0.5976 | pred2 0.5983
+==> Max FB-IoU:      pred0 0.7364 | pred1 0.6971 | pred2 0.6999
+==> Average mIoU:    pred0 0.5435 | pred1 0.5500 | pred2 0.5512
+==> Average FB-IoU:  pred0 0.7152 | pred1 0.6728 | pred2 0.6749
+==> Smoothed mIoU:   pred0 0.5435 | pred1 0.5500 | pred2 0.5512
+==> Smoothed FB-IoU: pred0 0.7152 | pred1 0.6728 | pred2 0.6749
+
+==> Epoch 2: training resume
+Epoch 2 Iter 15/20: loss0 0.56 mIoU0 0.7752 | loss1 8.65 mIoU1 0.3036 | loss2 8.50 mIoU2 0.3080 | lr 0.0015
+Epoch 2 Iter 20/20: loss0 0.56 mIoU0 0.7833 | loss1 9.88 mIoU1 0.3197 | loss2 9.75 mIoU2 0.3237 | lr 0.0015
+
+==> Epoch 2: testing start
+Episode 5/20: loss0 0.58 mIoU0 0.4798 | loss1 0.56 mIoU1 0.4812 | loss2 0.58 mIoU2 0.4812
+Episode 10/20: loss0 0.59 mIoU0 0.6465 | loss1 0.58 mIoU1 0.6336 | loss2 0.60 mIoU2 0.6349
+Episode 15/20: loss0 0.60 mIoU0 0.5866 | loss1 0.86 mIoU1 0.5757 | loss2 0.90 mIoU2 0.5769
+Episode 20/20: loss0 0.60 mIoU0 0.6191 | loss1 0.75 mIoU1 0.5894 | loss2 0.77 mIoU2 0.5915
+==> Testing: inference speed 408 iters/min
+==> Testing: class 1 mIoU 0.8555
+==> Testing: class 2 mIoU 0.5487
+==> Testing: class 3 mIoU 0.5961
+==> Testing: class 4 mIoU 0.1016
+==> Testing: class 5 mIoU 0.8558
+==> Testing: FB-IoU0 0.7574 | FB-IoU1 0.7099 | FB-IoU2 0.7130
+
+==> Max mIoU:        pred0 0.5538 | pred1 0.5976 | pred2 0.5983
+==> Max FB-IoU:      pred0 0.7574 | pred1 0.7099 | pred2 0.7130
+==> Average mIoU:    pred0 0.5624 | pred1 0.5598 | pred2 0.5613
+==> Average FB-IoU:  pred0 0.7258 | pred1 0.6821 | pred2 0.6845
+==> Smoothed mIoU:   pred0 0.5624 | pred1 0.5598 | pred2 0.5613
+==> Smoothed FB-IoU: pred0 0.7258 | pred1 0.6821 | pred2 0.6845
+
+==> Timer: 0.0 hrs/epoch | 0.0 hrs in total

@@ -39,7 +39,7 @@ For ImageNet pre-trained models, please download it <a href="https://drive.googl
 - **src**: Source code. `.py`
 
 ## Sample Usage
-`exp_id` aims to make efficient config modifications for experiment purposes. It follows the format of `[exp_group]\_[meta_cfg]\_[train_cfg]`, see `src/exp.py` for a sample usage.
+`exp_id` aims to make efficient config modifications for experiment purposes. It follows the format of `[exp_group]_[meta_cfg]_[train_cfg]`, see `src/exp.py` for a sample usage.
 ```shell
 # debug mode (i.e., only log to shell)
 python -m src.train --config configs/pascal_sample.yaml --exp_id sample_wd_pm11 --debug True
