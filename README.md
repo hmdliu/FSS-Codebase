@@ -1,5 +1,6 @@
 # FSS-Codebase
-This repo presents a scalable codebase for few-shot segmentation research. Some major references are <a href="https://github.com/dvlab-research/PFENet" target="_blank">**PFENet**</a>, <a href="https://github.com/zhiheLu/CWT-for-FSS" target="_blank">**CWT**</a>, and <a href="https://github.com/rstrudel/segmenter" target="_blank">**Segmenter**</a>.
+This repo presents a neat and scalable codebase for few-shot segmentation research. \
+Major references: <a href="https://github.com/dvlab-research/PFENet" target="_blank">**PFENet**</a>, <a href="https://github.com/zhiheLu/CWT-for-FSS" target="_blank">**CWT**</a>, and <a href="https://github.com/rstrudel/segmenter" target="_blank">**Segmenter**</a>.
 
 ## Requisites
 - Test Env: Python 3.9.7 (Singularity)
@@ -27,18 +28,18 @@ bash scripts/prepare_pascal.sh
 You may refer to <a href="https://github.com/dvlab-research/PFENet#datasets-and-data-preparation" target="_blank">PFENet</a> for more details.
 
 ### Pretrained models
-For ImageNet pre-trained models, please download it <a href="https://drive.google.com/file/d/1rMPedZBKFXiWwRX3OHttvKuD1h9QRDbU/view?usp=sharing" target="_blank">here</a> (credits <a href="https://github.com/dvlab-research/PFENet" target="_blank">PFENet</a>) and unzip as `initmodel/`. For models pre-trained on the base classes, you may find it <a href="https://drive.google.com/file/d/1VPBquiy4DZXu8b6qsSB6XtO5_6jTpXgo/view?usp=sharing" target="_blank">here</a> (credits <a href="https://github.com/zhiheLu/CWT-for-FSS" target="_blank">CWT</a>) and rename them as follows: `pretrained/[dataset]/split[i]/pspnet_resnet[layers]/best.pth`.
+For ImageNet pre-trained models, please download it <a href="https://drive.google.com/file/d/1rMPedZBKFXiWwRX3OHttvKuD1h9QRDbU/view?usp=sharing" target="_blank">here</a> (credits <a href="https://github.com/dvlab-research/PFENet#run-demo--test-with-pretrained-models" target="_blank">PFENet</a>) and unzip as `initmodel/`. For models pre-trained on the base classes, you may find it <a href="https://drive.google.com/file/d/1VPBquiy4DZXu8b6qsSB6XtO5_6jTpXgo/view?usp=sharing" target="_blank">here</a> (credits <a href="https://github.com/zhiheLu/CWT-for-FSS#pre-trained-models-in-the-first-stage" target="_blank">CWT</a>) and rename them as follows: `pretrained/[dataset]/split[i]/pspnet_resnet[layers]/best.pth`.
 
 ## Dir explanations
 - **initmodel**: ImageNet pre-trained backbone weights. `.pth`
 - **pretrained**: Base classes pre-trained backbone weights. `.pth`
-- **configs**: Experiment configurations. `.yaml`
-- **results**: Experiment logs and checkpoints. `.log` `.pth` `.yaml`
+- **configs**: Base configurations for experiments. `.yaml`
 - **scripts**: Training and helper scripts. `.sh` `.slurm`
+- **results**: Logs and checkpoints. `.log` `.pth` `.yaml`
 - **src**: Source code. `.py`
 
 ## Sample Usage
-**exp_id**: [exp_group]_[meta_cfg]_[train_cfg] (see `src/exp.py` for more details)
+`exp_id` aims to make efficient config modifications for experiment purposes. It follows the format of `[exp_group]\_[meta_cfg]\_[train_cfg]`, see `src/exp.py` for a sample usage.
 ```shell
 # debug mode (i.e., only log to shell)
 python -m src.train --config configs/pascal_sample.yaml --exp_id sample_wd_pm11 --debug True
