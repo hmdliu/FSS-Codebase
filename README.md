@@ -1,5 +1,6 @@
 # FSS-Codebase
-This repo presents a neat and scalable codebase for few-shot segmentation research. \
+This repo presents a neat and scalable codebase for few-shot segmentation research.
+
 Major references: <a href="https://github.com/dvlab-research/PFENet" target="_blank">**PFENet**</a>, <a href="https://github.com/zhiheLu/CWT-for-FSS" target="_blank">**CWT**</a>, and <a href="https://github.com/rstrudel/segmenter" target="_blank">**Segmenter**</a>.
 
 ## Requisites
